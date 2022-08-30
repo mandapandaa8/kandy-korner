@@ -1,0 +1,29 @@
+{
+    "locations": [
+        {
+            "id": 1,
+            "address": "405 Luther Ln, Seattle",
+            "sqFootage": "708 sq. feet"
+        },
+        {
+            "id": 2,
+            "address": "700 Walk Way, NY",
+            "sqFootage": "808 sq. feet"
+        },
+        {
+            "id": 3,
+            "address": "300 Hickory Blvd, Nashville",
+            "sqFootage": "766 sq. feet"
+        },
+        {
+            "id": 4,
+            "address": "420 Ocean Rd, Berkley",
+            "sqFootage": "690 sq. feet"
+        },
+        {
+            "id": 5,
+            "address": "803 Hollywood Ln, LA",
+            "sqFootage": "900 sq. feet"
+        }
+    ]
+}
