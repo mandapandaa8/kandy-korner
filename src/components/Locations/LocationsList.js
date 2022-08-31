@@ -1,5 +1,4 @@
 import { useEffect, useState} from "react"
-import { useNavigate } from "react-router-dom"
 import "./LocationsList.css"
 
 export const LocationList = () => {
