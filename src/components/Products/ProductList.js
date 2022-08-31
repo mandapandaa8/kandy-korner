@@ -6,7 +6,7 @@ export const ProductList = () => {
     const [filteredProducts, setFiltered] = useState([])
     const localKandyUser = localStorage.getItem("kandy_user")
     const kandyUserObject = JSON.parse(localKandyUser)
-    const [topPrice, setTopPrice] = useState([false])
+    const [topPrice, setTopPrice] = useState(false)
 
     useEffect(
         () => {
