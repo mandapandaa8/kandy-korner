@@ -1,19 +1,16 @@
 import { useEffect, useState} from "react"
-import "./ProductList.css"
+import "./FindKandyList.css"
 
-export const ProductList = () => {
+
+export const SearchedList = ({ searchTermState }) => {
     const [products, setProducts] = useState([])
     const [filteredProducts, setFiltered] = useState([])
-    const localKandyUser = localStorage.getItem("kandy_user")
-    const kandyUserObject = JSON.parse(localKandyUser)
-    const [topPrice, setTopPrice] = useState(false)
-    
+
     useEffect(
         () => {
-            fetch('http://localhost:8088/products?_expand=type')
+            fetch('http://localhost:8088/products')
             .then(response => response.json())
             .then((productsArray) => {
-                setFiltered(productsArray)
                 setProducts(productsArray)
             })
         },
@@ -22,32 +19,18 @@ export const ProductList = () => {
 
     useEffect(
         () => {
-            if (topPrice) {
-                const topPricedProduct = products.filter(product => product.price >= 2)
-                setFiltered(topPricedProduct)
-            }
-            else {
-                setFiltered(products)
-            }
+            //* filter original ticket list from API
+            const foundKandy = products.filter(product => {
+                return product.name.toLowerCase().startsWith(searchTermState.toLowerCase())
+            })
+            setFiltered(foundKandy)
         },
-        [topPrice]
+        [ searchTermState ] //* TicketList is observing when the parent SearchTermState is changing
     )
 
     return <>
 
         <h2 className="products_header">All of the Candy</h2>
-
-        {
-            kandyUserObject.staff
-            ? <>
-             {/* button should be named Top Priced
-              when clicked only the products greater than $2 should be listed
-              button should show for employees only */}
-            <button onClick={ () => { setTopPrice(true)} } >Most $$$</button>
-            <button onClick={ () => { setTopPrice(false)} } >Show All</button>
-            </>
-            : ""
-        }
 
         <article className="products">
             {
@@ -61,7 +44,6 @@ export const ProductList = () => {
                         
                         return <section className="product">
                         <header>The kandy: {product.name}</header>
-                        <div>The type: {product.type.category}</div>
                         <footer>{costString}</footer>
                         </section>
                     }
@@ -70,4 +52,3 @@ export const ProductList = () => {
         </article>
     </>
 }
-

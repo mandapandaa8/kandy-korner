@@ -1,0 +1,12 @@
+.products {
+    display: flex;
+    flex-direction: column;
+    font-family: Chalkduster, fantasy;
+}
+
+.products_header {
+    font-family: Chalkduster, fantasy;
+    font-variant: small-caps;
+    color: rgb(223, 24, 250);
+    text-shadow: 2px 2px rgb(157, 237, 225)
+}
